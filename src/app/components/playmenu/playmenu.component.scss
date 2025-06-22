@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+
+.menu-container {
+  max-width: 370px;
+  margin: 70px auto;
+  padding: 36px 28px 32px 28px;
+  background: linear-gradient(135deg, #f8f9fa 70%, #e0e7ef 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(30, 41, 59, 0.13), 0 1.5px 6px rgba(0,0,0,0.07);
+
+  font-family: 'Roboto', Arial, sans-serif;
+
+  h2 {
+    font-family: 'Russo One', 'Roboto', Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #22223b;
+    font-size: 2.1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px #b5b5b5;
+    font-weight: 700;
+    user-select: none;
+  }
+
+  label {
+    font-size: 1.13rem;
+    color: #3a3a3a;
+    margin-bottom: 10px;
+    display: block;
+    font-family: 'Roboto', Arial, sans-serif;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1.5px solid #bdbdbd;
+    font-size: 1.08rem;
+    margin-top: 6px;
+    margin-bottom: 22px;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: 'Roboto', Arial, sans-serif;
+    box-shadow: 0 1px 4px rgba(30,41,59,0.04);
+
+    &:focus {
+      border-color: #5e60ce;
+      outline: none;
+      box-shadow: 0 0 0 2px #b9bfff;
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 12px 0;
+    background: linear-gradient(90deg, #5e60ce 60%, #4361ee 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.18rem;
+    font-family: 'Russo One', 'Roboto', Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(67,97,238,0.13);
+    transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
+
+    &:hover {
+      background: linear-gradient(90deg, #4361ee 60%, #5e60ce 100%);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 4px 18px rgba(67,97,238,0.18);
+    }
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .dropdown-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 28px;
+    background: rgba(94, 96, 206, 0.07);
+    padding: 18px 14px 10px 14px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(67,97,238,0.07);
+    border: 1.5px solid #e0e7ef;
+    transition: box-shadow 0.18s;
+
+    label {
+      color: #22223b;
+      font-size: 1.15rem;
+      font-family: 'Russo One', 'Roboto', Arial, sans-serif;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 4px #e0e7ef;
+    }
+
+    select {
+      width: 90%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 2px solid #5e60ce;
+      font-size: 1.08rem;
+      background: linear-gradient(90deg, #f8f9fa 70%, #e0e7ef 100%);
+      font-family: 'Roboto', Arial, sans-serif;
+      box-shadow: 0 1px 6px rgba(67,97,238,0.08);
+      color: #22223b;
+      font-weight: 500;
+      transition: border-color 0.2s, box-shadow 0.2s;
+
+      &:focus {
+        border-color: #4361ee;
+        outline: none;
+        box-shadow: 0 0 0 2px #b9bfff;
+      }
+    }
+  }
+}
