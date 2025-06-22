@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { PlaymenuComponent } from "../components/playmenu/playmenu.component";
+import { PlayMenuComponent } from "../components/play-menu/play-menu.component";
+import { HeaderComponent } from "../components/header/header.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [PlaymenuComponent],
+  imports: [PlayMenuComponent, HeaderComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
 
