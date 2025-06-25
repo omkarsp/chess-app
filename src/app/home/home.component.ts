@@ -9,6 +9,7 @@ import { HeaderComponent } from "../components/header/header.component";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
 
+export class HomeComponent {
+  
 }
