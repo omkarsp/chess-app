@@ -1,0 +1,15 @@
+<app-header />
+<!-- profile.component.html -->
+@if (profile(); as user) {
+  <div>
+    <h2>{{ user.name.title }} {{ user.name.first }} {{ user.name.last }}</h2>
+    <img [src]="user.picture.large" alt="Profile photo" />
+    <p>Email: {{ user.email }}</p>
+    <p>Location: {{ user.location.city }}, {{ user.location.state }}</p>
+    <p>Phone: {{ user.phone }}</p>
+    <!-- <p>DOB: {{ user.dob.date | date:'mediumDate' }}</p> -->
+  </div>
+} @else {
+  <p>Loading...</p>
+}
+

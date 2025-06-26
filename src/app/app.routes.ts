@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { AuthGuardService } from './services/fakeauth/auth-guard/auth-guard.service';
 
 export const routes: Routes = [
     {
@@ -9,8 +9,20 @@ export const routes: Routes = [
     },
     {
         path: "login",
-        loadComponent: () =>{
-            return import('./components/auth/login/login.component').then(m => m.LoginComponent);
-        }
+        loadComponent: () => import('./components/auth/login/login.component').then(m => m.LoginComponent)
+        
+    },
+    {
+        path: 'register',
+        loadComponent: () => import('./components/auth/register/register.component').then(m => m.RegisterComponent)
+    },
+    {
+        path: 'profile',
+        loadComponent: () => import('./components/profile/profile.component').then(m => m.ProfileComponent),
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: 'forgot-password',
+        loadComponent: () =>  import('./components/auth/forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent)
     }
 ];

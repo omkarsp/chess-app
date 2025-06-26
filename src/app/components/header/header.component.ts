@@ -11,4 +11,14 @@ import { RouterLink, RouterModule } from '@angular/router';
 
 export class HeaderComponent {
 
+  toggleLoginEl = false;
+  toggleRegisterEl = false;
+
+  toggleLoginView() : void{
+
+  }
+
+  toggleRegisterView() : void{
+
+  }
 }
