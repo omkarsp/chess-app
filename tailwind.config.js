@@ -5,7 +5,14 @@ module.exports = {
     "./src/**/*.{html,ts,scss}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        russ: ['"Russo One"', 'sans-serif'],
+      },
+      colors: {
+        royalblue: '#4361ee',
+      },
+    },
   },
   plugins: [],
 }

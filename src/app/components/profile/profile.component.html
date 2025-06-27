@@ -1,15 +1,24 @@
 <app-header />
 <!-- profile.component.html -->
-@if (profile(); as user) {
-  <div>
-    <h2>{{ user.name.title }} {{ user.name.first }} {{ user.name.last }}</h2>
-    <img [src]="user.picture.large" alt="Profile photo" />
-    <p>Email: {{ user.email }}</p>
-    <p>Location: {{ user.location.city }}, {{ user.location.state }}</p>
-    <p>Phone: {{ user.phone }}</p>
-    <!-- <p>DOB: {{ user.dob.date | date:'mediumDate' }}</p> -->
+
+
+@if (profileService.profile(); as user) {
+  <div class="flex justify-self-center text-center p-6 m-4 rounded-3xl shadow-2xl font-russ dark: bg-gray-700 dark: text-gray-200">
+    <div class="space-y-2">
+      <h1 class="flex justify-center mb-8 font-russ text-2xl text-gray-500 dark:text-gray-400">Profile</h1>
+      <img [src]="user.picture.large" alt="Profile photo" class="mx-auto rounded-full shadow-2xl shadow-black dark:shadow-gray-500 my-6" />
+      <h2 class="pt-2 text-2xl">{{ user.name.title }} {{ user.name.first }} {{ user.name.last }}</h2>
+      <p class="pt-4">📧 {{ user.email }}</p>
+      <p>📍 {{ user.location.city }}, {{ user.location.state }}</p>
+      <p>📞 {{ user.phone }}</p>
+      <p>🎂 {{ user.dob.date | date:'mediumDate' }}</p>
+
+      <div class="p-4 flex-shrink">
+        <button class="shadow-md p-2 bg-royalblue rounded-md text-white w-4/5">Logout</button>
+      </div>
+
+    </div>
   </div>
 } @else {
   <p>Loading...</p>
 }
-
