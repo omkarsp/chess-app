@@ -2,6 +2,7 @@
 
 .header-bar {
   width: 100%;
+  overflow-x: auto;
   background: linear-gradient(90deg, #5e60ce 60%, #4361ee 100%);
   padding: 0 0 0 0;
   box-shadow: 0 2px 16px rgba(67,97,238,0.10);
