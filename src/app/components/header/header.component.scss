@@ -67,3 +67,20 @@
     }
   }
 }
+
+:host-context(.dark) .header-bar{
+  background: #374151;
+}
+
+:host-context(.dark) .header-bar .header-nav a{
+  color: lightgray;
+}
+
+:host-context(.dark) .header-bar .header-nav a:hover{
+  background: lightgray;
+  color: #374151;
+}
+
+:host-context(.dark) .header-bar .header-title .site-name{
+  color: lightgray;
+}

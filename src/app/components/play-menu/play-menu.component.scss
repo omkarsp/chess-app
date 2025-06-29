@@ -2,9 +2,10 @@
 
 .menu-container {
   max-width: 370px;
-  margin: 70px auto;
-  padding: 36px 28px 32px 28px;
+  margin: 24px auto;
+  padding: 46px 28px 32px 28px;
   background: linear-gradient(135deg, #f8f9fa 70%, #e0e7ef 100%);
+  color: #22223b;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(30, 41, 59, 0.13), 0 1.5px 6px rgba(0,0,0,0.07);
 
@@ -14,11 +15,11 @@
     font-family: 'Russo One', 'Roboto', Arial, sans-serif;
     text-align: center;
     margin-bottom: 30px;
-    color: #22223b;
-    font-size: 2.1rem;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 8px #b5b5b5;
-    font-weight: 700;
+    color: #4b5563;
+    font-size: x-large;
+    // letter-spacing: 2px;
+    text-shadow: 0 0px 0px #b5b5b5;
+    font-weight: 400;
     user-select: none;
   }
 
@@ -50,10 +51,6 @@
       outline: none;
       box-shadow: 0 0 0 2px #b9bfff;
     }
-
-    .dark & {
-      background: #23243a;
-    } 
   }
 
   button {
@@ -121,5 +118,57 @@
       }
     }
   }
-  
 }
+
+:host-context(.dark) .menu-container {
+  // background: linear-gradient(135deg, #494952 70%, #37373e 100%);
+  background: #374151;
+  color: #f3f4f6;
+  box-shadow: 0 8px 32px rgba(30, 41, 59, 0.23), 0 1.5px 6px rgba(0,0,0,0.17);
+}
+
+:host-context(.dark) .menu-container h2 {
+  color: #d4d4d4;
+  text-shadow: 0 2px 8px #23243a;
+}
+
+:host-context(.dark) .menu-container label {
+  color: #e0e7ef;
+}
+
+:host-context(.dark) .menu-container select {
+  background: #23243a;
+  color: #f3f4f6;
+  border-color: #3b3b5c;
+}
+
+:host-context(.dark) .menu-container button {
+  // background: linear-gradient(90deg, #23243a 60%, #5e60ce 100%);
+  color: #23243A;
+  background: lightgray;
+  box-shadow: 0 2px 12px rgba(67,97,238,0.23);
+}
+
+:host-context(.dark) .menu-container .dropdown-section {
+  background: rgba(35, 36, 58, 0.7);
+  border-color: #23243a;
+  box-shadow: 0 2px 8px rgba(67,97,238,0.17);
+}
+
+:host-context(.dark) .menu-container .dropdown-section label {
+  color: #e0e7ef;
+  text-shadow: 0 1px 4px #23243a;
+}
+
+:host-context(.dark) .menu-container .dropdown-section select {
+  background: linear-gradient(90deg, #23243a 70%, #18192b 100%);
+  color: lightgrey;
+  border-color: #3b3b5c;
+}
+
+:host-context(.dark) .menu-container .dropdown-section select option{
+  color: lightgrey;
+  background: #23243a;
+}
+
+
