@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
@@ -10,19 +10,14 @@ import { RouterLink, RouterModule } from '@angular/router';
 })
 
 export class HeaderComponent {
-
-  toggleLoginEl = false;
-  toggleRegisterEl = false;
-
-  toggleLoginView() : void{
-
-  }
-
-  toggleRegisterView() : void{
-
-  }
+  @Output() sectionChange = new EventEmitter<string>();
 
   toggleDarkMode(){
     document.documentElement.classList.toggle('dark');
+  }
+
+  selectSection(section: string) {
+    this.sectionChange.emit(section);
+    console.log(section);
   }
 }
