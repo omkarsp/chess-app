@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../header/header.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
