@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
@@ -20,5 +20,9 @@ export class HeaderComponent {
 
   toggleRegisterView() : void{
 
+  }
+
+  toggleDarkMode(){
+    document.documentElement.classList.toggle('dark');
   }
 }

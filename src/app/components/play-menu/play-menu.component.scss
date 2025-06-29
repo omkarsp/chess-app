@@ -50,6 +50,10 @@
       outline: none;
       box-shadow: 0 0 0 2px #b9bfff;
     }
+
+    .dark & {
+      background: #23243a;
+    } 
   }
 
   button {
@@ -76,7 +80,6 @@
       transform: scale(0.98);
     }
   }
-
   .dropdown-section {
     display: flex;
     flex-direction: column;
@@ -118,4 +121,5 @@
       }
     }
   }
+  
 }
