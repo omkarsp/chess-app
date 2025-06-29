@@ -1,7 +1,4 @@
 <div class="min-h-screen bg-indigo-300">
-    <app-header (sectionChange)="setSection($event)" ></app-header>
-    <app-play-menu *ngIf="activeSection === 'app-play-menu'"></app-play-menu>
-    <app-profile *ngIf="activeSection === 'app-profile'"></app-profile>
-    <app-login *ngIf="activeSection === 'app-login'"></app-login>
-    <app-register *ngIf="activeSection === 'app-register'"></app-register>
+    <app-header />
+    <router-outlet></router-outlet>
 </div>

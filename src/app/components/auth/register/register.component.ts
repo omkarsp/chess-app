@@ -4,7 +4,7 @@ import { HeaderComponent } from '../../header/header.component';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
