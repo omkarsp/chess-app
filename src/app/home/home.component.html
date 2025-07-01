@@ -1,4 +1,7 @@
 <div class="min-h-screen bg-gradient-to-bl from-neutral-300 to-blue-600 dark:bg-gradient-to-bl dark:from-neutral-500 dark:to-blue-900">
     <app-header />
+    @if(hamburgerMenuService.isMenuOpen()){
+        <app-hamburger />
+    }
     <router-outlet></router-outlet>
 </div>

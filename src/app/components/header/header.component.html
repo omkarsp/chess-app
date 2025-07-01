@@ -5,9 +5,16 @@
   </div>
   <nav class="header-nav">
     <button (click)="toggleDarkMode()" class="flex m-auto text-2xl scale-125 hover:scale-150 duration-100">🌓</button>
-    <a routerLink="/play-menu">Home</a>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
-    <a routerLink="/profile">Profile</a>
+    @if (!isMobile()) {
+      <a routerLink="/play-menu">Home</a>
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+      <a routerLink="/profile">Profile</a>
+    }@else {
+      <button 
+            (click)="hamburgerMenuService.toggleMenu()"
+            class="cursor-pointer text-2xl"
+      >☰</button>
+    }
   </nav>
 </header>
