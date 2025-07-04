@@ -4,27 +4,29 @@
     <form class="m-6 flex flex-col mx-auto">
 
         <input 
+            #emailInput
             type="email" 
             placeholder="Email..."
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100"
         />
-        <input 
+        <!-- <input 
             type="text" 
             placeholder="Username..." 
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100"
-        />
+        /> -->
         <input 
+            #passwordInput
             type="password" 
             placeholder="Password..." 
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100"
         />
-        <input 
+        <!-- <input 
             type="password" 
             placeholder="Confirm Password..." 
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100 "
-        />
+        /> -->
 
-        <button class="py-3 bg-royalblue w-11/12 mx-auto rounded-lg text-gray-50 mt-8 hover:scale-105 translate-y-5 duration-100 dark:bg-neutral-300 dark:text-gray-700">Register</button>
+        <button (click)="register(emailInput.value, passwordInput.value)" class="py-3 bg-royalblue w-11/12 mx-auto rounded-lg text-gray-50 mt-8 hover:scale-105 translate-y-5 duration-100 dark:bg-neutral-300 dark:text-gray-700">Register</button>
 
     </form>
 </div>

@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +9,11 @@ export class LoginService {
 
   isAuthenticated: boolean = true;
 
-  constructor() { }
+  private http = inject(HttpClient);
 
-  login() : void{
-    this.isAuthenticated = true;
+  login(credentials: {email:string, password:string}) : Observable<any>{
+    // this.isAuthenticated = true;
+    return this.http.post('https://localhost:5011/login',credentials)
   }
 
   logout(): void{
