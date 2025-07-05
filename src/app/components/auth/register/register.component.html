@@ -1,21 +1,28 @@
 <div class="register-container flex flex-col justify-self-center text-center m-6 p-12 font-russ rounded-2xl shadow-2xl bg-gray-100 text-gray-700 dark:text-gray-100 dark:bg-gray-700">
 
     <h2 class="text-2xl text-gray-600 dark:text-neutral-300">Register</h2>
-    <form class="m-6 flex flex-col mx-auto">
+    <form 
+        class="m-6 flex flex-col mx-auto"
+        (ngSubmit)="register()"
+    >
 
         <input 
-            #emailInput
+            [(ngModel)]="user.username"
+            name="username"
+            type="text" 
+            placeholder="Username..." 
+            class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100"
+        />
+        <input 
+            [(ngModel)]="user.email"
+            name="email"
             type="email" 
             placeholder="Email..."
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100"
         />
-        <!-- <input 
-            type="text" 
-            placeholder="Username..." 
-            class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100"
-        /> -->
         <input 
-            #passwordInput
+            [(ngModel)]="user.password"
+            name="password"
             type="password" 
             placeholder="Password..." 
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100"
@@ -26,7 +33,7 @@
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100 "
         /> -->
 
-        <button (click)="register(emailInput.value, passwordInput.value)" class="py-3 bg-royalblue w-11/12 mx-auto rounded-lg text-gray-50 mt-8 hover:scale-105 translate-y-5 duration-100 dark:bg-neutral-300 dark:text-gray-700">Register</button>
+        <button type="submit" class="py-3 bg-royalblue w-11/12 mx-auto rounded-lg text-gray-50 mt-8 hover:scale-105 translate-y-5 duration-100 dark:bg-neutral-300 dark:text-gray-700">Register</button>
 
     </form>
 </div>
