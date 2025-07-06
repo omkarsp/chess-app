@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HamburgerComponent } from '../hamburger/hamburger.component';
 import { HamburgerMenuService } from '../../services/hamburger-menu/hamburger-menu.service';
+import { LoginService } from '../../services/auth/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -13,12 +13,12 @@ import { HamburgerMenuService } from '../../services/hamburger-menu/hamburger-me
 
 export class HeaderComponent implements OnInit {
 
-  @Output() sectionChange = new EventEmitter<string>();
-
+  //dark mode toggle
   toggleDarkMode(){
     document.documentElement.classList.toggle('dark');
   }
 
+  //responsiveness
   isMobile = signal<boolean | null>(window.innerWidth < 800);
 
   ngOnInit(): void {
@@ -27,5 +27,13 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  constructor(public hamburgerMenuService: HamburgerMenuService){}
+  hamburgerMenuService = inject(HamburgerMenuService);
+
+  toggleHamburgerMenu() {
+    this.hamburgerMenuService.toggleMenu();
+  }
+
+  //show/hide login and register
+  loginService = inject(LoginService);
+  
 }

@@ -37,7 +37,7 @@ export const routes: Routes = [
         children:[
             {path: '', component: PlayMenuComponent},
             {path: 'play-menu', component: PlayMenuComponent},
-            {path: 'login', component: LoginComponent},
+            {path: 'login', component: LoginComponent, canActivate: []}, // AuthGuardService can be added here if needed
             {path: 'register', component: RegisterComponent},
             {path: 'profile', component: ProfileComponent},
             {path: 'forgot-password', component: ForgotPasswordComponent}

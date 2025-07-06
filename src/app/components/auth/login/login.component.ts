@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { LoginService } from '../../../services/fake-auth/login/login.service';
+import { LoginService } from '../../../services/auth/login/login.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -21,6 +21,7 @@ export class LoginComponent {
         // e.g., this.router.navigate(['/home']);
         alert('Login successful!');
         console.log('Login successful with credentials:', credentials);
+        localStorage.setItem('token', 'fake-jwt-token'); // Simulate token storage
       },
       error: (err) => {
         // Show error message
