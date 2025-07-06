@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { LoginService } from '../../services/auth/login/login.service';
 
 @Component({
   selector: 'app-hamburger',
@@ -9,4 +10,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './hamburger.component.scss'
 })
 export class HamburgerComponent {
+  loginService = inject(LoginService);
 }

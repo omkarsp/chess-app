@@ -1,6 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/auth/login/login.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,23 +10,24 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  ngOnInit(): void {
+    this.loginService.init(); // Initialize the login service
+  }
 
   loginService = inject(LoginService);
+  router = inject(Router)
 
   login(username: string, password: string) {
     const credentials = { username, password };
     this.loginService.login(credentials).subscribe({
       next: () => {
-        // Optionally navigate or show success
-        // e.g., this.router.navigate(['/home']);
-        alert('Login successful!');
         console.log('Login successful with credentials:', credentials);
         localStorage.setItem('token', 'fake-jwt-token'); // Simulate token storage
+        this.router.navigate(['/play-menu']);
       },
       error: (err) => {
-        // Show error message
-        alert('Login failed: ' + (err.error?.message || 'Unknown error'));
+        alert('Login failed: ' + (err.error?.message || 'Wrong username and/or password.'));
       }
     });
   }

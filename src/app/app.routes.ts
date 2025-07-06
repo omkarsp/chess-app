@@ -6,6 +6,8 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
+import { authGuard } from './guards/auth/auth.guard';
+import { authRedirectGuard } from './guards/auth/auth-redirect.guard';
 
 export const routes: Routes = [
     // {
@@ -31,15 +33,20 @@ export const routes: Routes = [
     //     path: 'forgot-password',
     //     loadComponent: () =>  import('./components/auth/forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent)
     // },
+
     {
         path:'',
         component:HomeComponent,
         children:[
-            {path: '', component: PlayMenuComponent},
-            {path: 'play-menu', component: PlayMenuComponent},
-            {path: 'login', component: LoginComponent, canActivate: []}, // AuthGuardService can be added here if needed
-            {path: 'register', component: RegisterComponent},
-            {path: 'profile', component: ProfileComponent},
+            {
+                path: '', 
+                component: LoginComponent,
+                canActivate: [authRedirectGuard] // Redirects to play-menu if already authenticated
+            },
+            {path: 'play-menu', component: PlayMenuComponent, canActivate: [authGuard]},
+            {path: 'login', component: LoginComponent, canActivate: [authRedirectGuard]}, // AuthGuardService can be added here if needed
+            {path: 'register', component: RegisterComponent, canActivate: [authRedirectGuard]},
+            {path: 'profile', component: ProfileComponent, canActivate: [authGuard]},
             {path: 'forgot-password', component: ForgotPasswordComponent}
         ]
     }

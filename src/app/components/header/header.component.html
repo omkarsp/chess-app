@@ -1,17 +1,19 @@
 <header class="header-bar">
-  <div class="header-title">
+  <div class="header-title" routerLink="/play-menu">
     <span class="chess-logo">♟️</span>
-    <span class="site-name" routerLink="/play-menu">Chess App</span>
+    <span class="site-name">Chess App</span>
   </div>
   <nav class="header-nav">
     <button (click)="toggleDarkMode()" class="flex m-auto text-2xl scale-125 hover:scale-150 duration-100">🌓</button>
     @if (!isMobile()) {
-      <a routerLink="/play-menu">Home</a>
-      @if (!loginService.isAuthenticatedSignal()) {
+      @if (loginService.isAuthenticatedSignal()) {
+        <a routerLink="/play-menu">Home</a>
+        <a routerLink="/profile">Profile</a>
+      }
+      @if(!loginService.isAuthenticatedSignal()) {
         <a routerLink="/login">Login</a>
         <a routerLink="/register">Register</a>
       }
-      <a routerLink="/profile">Profile</a>
     }@else {
       <button 
             (click)="toggleHamburgerMenu()"

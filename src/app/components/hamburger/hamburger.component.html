@@ -1,8 +1,12 @@
 <div>
     <div class="inline-flex flex-col bg-indigo-700 rounded-md p-4 m-4 float-end">
-        <a routerLink="/play-menu">Home</a>
-        <a routerLink="/login">Login</a>
-        <a routerLink="/register">Register</a>
-        <a routerLink="/profile">Profile</a>
+        @if (loginService.isAuthenticatedSignal()) {
+            <a routerLink="/play-menu">Home</a>
+            <a routerLink="/profile">Profile</a>
+        }
+        @if (!loginService.isAuthenticatedSignal()) {
+            <a routerLink="/login">Login</a>
+            <a routerLink="/register">Register</a>
+        }
     </div>
 </div>

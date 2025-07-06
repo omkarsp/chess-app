@@ -14,7 +14,7 @@ export class RegisterService {
     return this.http.post<{ token: string }>('https://localhost:7037/Auth/register', user)
     .pipe(
       tap(response => {
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('chess-login-token', response.token);
       }),
       tap(response => console.log('Backend response:', response)),
       catchError(err => {

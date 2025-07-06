@@ -10,7 +10,7 @@
       <p>🎂 {{ user.dob.date | date:'mediumDate' }}</p>
 
       <div class="pb-6 flex-shrink">
-        <button class="shadow-md p-2 bg-royalblue rounded-md text-white w-4/5 hover:scale-105 translate-y-5 duration-100 dark:bg-neutral-300 dark:text-gray-700">Logout</button>
+        <button name="logout" (click)="loginService.logout()" class="shadow-md p-2 bg-royalblue rounded-md text-white w-4/5 hover:scale-105 translate-y-5 duration-100 dark:bg-neutral-300 dark:text-gray-700">Logout</button>
       </div>
 
     </div>

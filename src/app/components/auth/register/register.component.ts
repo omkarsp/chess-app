@@ -17,20 +17,17 @@ export class RegisterComponent {
 
   user: User = { username: '', email: '', password: '' };
 
-  private Response: any = {
-    token:'',
-    expiration: ""
-  }
-
   router = inject(Router);
 
   register() {
-    debugger
     this.registerService.register(this.user).subscribe({
-      next: (response : Response) => {
-        alert('Registration successful!');
-        console.log(response.status);
-        this.router.navigate(['home']);
+      next: (response) => {
+        if (response && response.token) {
+          alert('Registration successful!');
+          this.router.navigate(['/login']);
+        } else {
+          alert('Registration failed: User may already exist or invalid data.');
+        }
       },
       error: (err) => {
         alert('Registration failed: ' + (err.error?.message || 'Unknown error'));

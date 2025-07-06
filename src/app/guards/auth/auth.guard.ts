@@ -1,12 +1,32 @@
-import { CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
 
 export const authGuard: CanActivateFn = (route, state) => {
 
-  if( !localStorage.getItem('token') ) {
+  const localData = localStorage.getItem('chess-login-token');
+  const router = inject(Router);
+
+  if(localData != null) {
+    return true;
+  }else{
     // User is not authenticated, redirect to login or show an error
-    console.error('Access denied - User not authenticated');
+    console.log('Access denied - User not authenticated');
+    router.navigate(['/login']);
     return false; // Prevent navigation
   }
-
-  return true;
 };
+
+// export class AuthGuardService implements CanActivate {
+
+//   constructor(private loginservice: LoginService, private router: Router) { }
+//   private localData = localStorage.getItem('chess-login-token');
+
+//   canActivate() : boolean{
+//     if(this.loginservice.isAuthenticatedSignal()){
+//       return true;
+//     }else{
+//       this.router.navigate(['/login']);
+//       return false;
+//     }
+//   }
+// }

@@ -1,7 +1,8 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { ProfileService } from '../../services/fake-profile/profile.service';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../services/auth/login/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,8 @@ import { CommonModule } from '@angular/common';
 })
 export class ProfileComponent implements OnInit{
 
-  constructor(public profileService: ProfileService){}
+  loginService = inject(LoginService);
+  profileService = inject(ProfileService);
 
   ngOnInit(): void {
     this.profileService.fetchProfile();
