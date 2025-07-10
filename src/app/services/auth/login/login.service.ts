@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { Credentials } from '../../../models/credentials.type';
 import { LoginResponse } from '../../../models/login-response.type';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class LoginService {
   private isAuthenticated = signal<boolean>(false);
   private router = inject(Router);
   private http = inject(HttpClient);
+  private apiUrl = environment.apiUrl;
 
   constructor() {
     // Initialize authentication state from localStorage
@@ -22,7 +24,7 @@ export class LoginService {
   }
 
   login(credentials: Credentials): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>('https://localhost:7037/Auth/login', credentials)
+    return this.http.post<LoginResponse>(`${this.apiUrl}/Auth/login`, credentials)
       .pipe(
         tap((response: LoginResponse) => {
           if (response.token) {
