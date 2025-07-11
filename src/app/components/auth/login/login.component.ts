@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     this.loginService.login(credentials).subscribe({
       next: () => {
         console.log('Login successful with credentials:', credentials);
-        localStorage.setItem('token', 'fake-jwt-token'); // Simulate token storage
         this.router.navigate(['/play-menu']);
       },
       error: (err) => {
