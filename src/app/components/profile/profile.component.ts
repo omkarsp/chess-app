@@ -1,5 +1,4 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 import { ProfileService } from '../../services/fake-profile/profile.service';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../services/auth/login/login.service';

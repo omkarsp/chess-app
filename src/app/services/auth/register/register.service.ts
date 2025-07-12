@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { User } from '../../../models/user.type';
 import { environment } from '../../../../environment/environment';
 
@@ -21,7 +21,18 @@ export class RegisterService {
       tap(response => console.log('Backend response:', response)),
       catchError(err => {
         console.error('Backend error:', err);
-        return of(null);
+        
+        // Enhanced error handling - preserve the original error structure
+        // so the component can access the detailed validation errors
+        if (err.error && err.error.error) {
+          // If the backend returns errors in a nested structure
+          return throwError(() => ({
+            ...err,
+            error: err.error.error
+          }));
+        }
+        
+        return throwError(() => err);
       })
     );
   }

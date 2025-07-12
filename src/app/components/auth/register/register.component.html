@@ -1,6 +1,18 @@
 <div class="register-container flex flex-col justify-self-center text-center m-6 p-12 font-russ rounded-2xl shadow-2xl bg-gray-100 text-gray-700 dark:text-gray-100 dark:bg-gray-700">
 
     <h2 class="text-2xl text-gray-600 dark:text-neutral-300">Register</h2>
+    
+    <!-- Error Messages -->
+    @if (errorMessages().length > 0) {
+        <div class="error-messages bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 dark:bg-red-900 dark:border-red-700 dark:text-red-300">
+            <ul class="list-disc list-inside text-left">
+                @for (error of errorMessages(); track error) {
+                    <li>{{ error }}</li>
+                }
+            </ul>
+        </div>
+    }
+    
     <form 
         class="m-6 flex flex-col mx-auto"
         (ngSubmit)="register()"
@@ -12,6 +24,7 @@
             type="text" 
             placeholder="Username..." 
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100"
+            required
         />
         <input 
             [(ngModel)]="user.email"
@@ -19,6 +32,7 @@
             type="email" 
             placeholder="Email..."
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100"
+            required
         />
         <input 
             [(ngModel)]="user.password"
@@ -26,14 +40,71 @@
             type="password" 
             placeholder="Password..." 
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100"
+            required
         />
+        
+        <!-- Password Requirements -->
+        @if (user.password.length > 0) {
+            <div class="password-requirements bg-blue-50 border border-blue-200 rounded-md p-4 mb-4 text-left dark:bg-blue-900 dark:border-blue-700">
+                <h4 class="font-semibold text-blue-800 dark:text-blue-300 mb-2">Password Requirements:</h4>
+                <ul class="text-sm space-y-1">
+                    @for (requirement of passwordRequirements; track requirement; let i = $index) {
+                        <li class="flex items-center">
+                            @if (i === 0 && getPasswordRequirementStatus(user.password).hasLength) {
+                                <span class="text-green-500 mr-2">✓</span>
+                            } @else if (i === 0) {
+                                <span class="text-red-500 mr-2">✗</span>
+                            }
+                            @if (i === 1 && getPasswordRequirementStatus(user.password).hasUpper) {
+                                <span class="text-green-500 mr-2">✓</span>
+                            } @else if (i === 1) {
+                                <span class="text-red-500 mr-2">✗</span>
+                            }
+                            @if (i === 2 && getPasswordRequirementStatus(user.password).hasLower) {
+                                <span class="text-green-500 mr-2">✓</span>
+                            } @else if (i === 2) {
+                                <span class="text-red-500 mr-2">✗</span>
+                            }
+                            @if (i === 3 && getPasswordRequirementStatus(user.password).hasDigit) {
+                                <span class="text-green-500 mr-2">✓</span>
+                            } @else if (i === 3) {
+                                <span class="text-red-500 mr-2">✗</span>
+                            }
+                            @if (i === 4 && getPasswordRequirementStatus(user.password).hasNonAlphanumeric) {
+                                <span class="text-green-500 mr-2">✓</span>
+                            } @else if (i === 4) {
+                                <span class="text-red-500 mr-2">✗</span>
+                            }
+                            <span class="text-gray-700 dark:text-gray-300">{{ requirement }}</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        
         <!-- <input 
             type="password" 
             placeholder="Confirm Password..." 
             class="text-xl text-center border-2 rounded-md border-gray-200 m-3 dark:bg-gray-700 hover:scale-105 translate-y-5 duration-100 "
         /> -->
 
-        <button type="submit" class="py-3 bg-royalblue w-11/12 mx-auto rounded-lg text-gray-50 mt-8 hover:scale-105 translate-y-5 duration-100 dark:bg-neutral-300 dark:text-gray-700">Register</button>
+        <button 
+            type="submit" 
+            class="py-3 bg-royalblue w-11/12 mx-auto rounded-lg text-gray-50 mt-8 hover:scale-105 translate-y-5 duration-100 dark:bg-neutral-300 dark:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            [disabled]="isLoading() || !user.username || !user.email || !checkPasswordRequirements(user.password)"
+        >
+            @if (isLoading()) {
+                <span class="flex items-center justify-center">
+                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Registering...
+                </span>
+            } @else {
+                Register
+            }
+        </button>
 
     </form>
 </div>
